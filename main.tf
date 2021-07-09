@@ -73,8 +73,8 @@ module "eks_workers" {
   for_each = var.eks_worker_groups
 
   subnet_ids   = var.private_subnet_ids
-  cluster_name = module.label.id
-  # cluster_name      = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
+  # cluster_name = module.label.id
+  cluster_name      = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
   name              = var.eks_worker_groups[each.key].name
   instance_types    = var.eks_worker_groups[each.key].instance_type
   desired_size      = var.eks_worker_groups[each.key].desired_size
