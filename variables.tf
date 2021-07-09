@@ -13,22 +13,22 @@ variable "availability_zones" {
 ####################################################################
 
 variable "vpc_id" {
-  type = string
+  type        = string
   description = "VPC ID for the cluster VPC ID"
 }
 
 variable "private_subnet_ids" {
-  type = list(string)
+  type        = list(string)
   description = "Private Subnet Ids"
 }
 
 variable "public_subnet_ids" {
-  type = list(string)
+  type        = list(string)
   description = "Public Subnet Ids"
 }
 
 variable "eks_worker_security_group_id" {
-  type = string
+  type        = string
   description = "Security group to allow traffic eks workers to talk to eachother sg-XXXXXXXXX"
 }
 
@@ -40,7 +40,7 @@ variable "kubernetes_version" {
 
 variable "enabled_cluster_log_types" {
   type        = list(string)
-  default =  ["audit"]
+  default     = ["audit"]
   description = "A list of the desired control plane logging to enable. For more information, see https://docs.aws.amazon.com/en_us/eks/latest/userguide/control-plane-logs.html. Possible values [`api`, `audit`, `authenticator`, `controllerManager`, `scheduler`]"
 }
 
@@ -144,26 +144,26 @@ variable "cluster_encryption_config_resources" {
 
 variable "autoscaling_policies_enabled" {
   type        = bool
-  default = true
+  default     = true
   description = "Whether to create `aws_autoscaling_policy` and `aws_cloudwatch_metric_alarm` resources to control Auto Scaling"
 }
 
 variable "eks_worker_groups" {
   description = "EKS Worker Groups"
   type = list(object({
-    name = string
-    instance_type  = string
+    name          = string
+    instance_type = string
     desired_size  = number
-    min_size  = number
-    max_size  = number
+    min_size      = number
+    max_size      = number
   }))
   default = [
     {
-      name = "t3a_medium"
+      name          = "t3a_medium"
       instance_type = "t3a.medium"
-      desired_size = 1
-      min_size = 1
-      max_size = 2
+      desired_size  = 1
+      min_size      = 1
+      max_size      = 2
     }
   ]
 }
@@ -174,20 +174,20 @@ variable "eks_worker_groups" {
 
 variable "eks_node_groups" {
   type = list(object({
-    instance_types   = list(string)
-    desired_size  = number
-    min_size  = number
-    max_size  = number
-    disk_size  = number
+    instance_types = list(string)
+    desired_size   = number
+    min_size       = number
+    max_size       = number
+    disk_size      = number
   }))
   description = "EKS Worker Groups"
   default = [
     {
       instance_types = ["t3a.medium"]
-      desired_size = 1
-      min_size = 1
-      max_size = 2
-      disk_size = 20
+      desired_size   = 1
+      min_size       = 1
+      max_size       = 2
+      disk_size      = 20
     }
   ]
 }

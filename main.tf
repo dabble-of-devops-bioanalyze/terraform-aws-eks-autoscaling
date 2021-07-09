@@ -13,7 +13,7 @@ module "label" {
 
   tags = {
     "k8s.io/cluster-autoscaler/${module.this.cluster_name}" = "true"
-    "k8s.io/cluster-autoscaler/enabled" = "true"
+    "k8s.io/cluster-autoscaler/enabled"                     = "true"
   }
 
   context = module.this.context
@@ -24,8 +24,8 @@ locals {
   # for EKS and Kubernetes to discover and manage networking resources
   # https://www.terraform.io/docs/providers/aws/guides/eks-getting-started.html#base-vpc-networking
 
-  tags = merge(module.label.tags, 
-    map("kubernetes.io/cluster/${module.label.id}", "shared"))
+  tags = merge(module.label.tags,
+  map("kubernetes.io/cluster/${module.label.id}", "shared"))
 
   # Unfortunately, most_recent (https://github.com/cloudposse/terraform-aws-eks-workers/blob/34a43c25624a6efb3ba5d2770a601d7cb3c0d391/main.tf#L141)
   # variable does not work as expected, if you are not going to use custom ami you should
@@ -44,8 +44,8 @@ locals {
 }
 
 module "eks_cluster" {
-  source = "cloudposse/eks-cluster/aws"
-  version     = "0.41.0"
+  source  = "cloudposse/eks-cluster/aws"
+  version = "0.41.0"
 
   region                       = var.region
   vpc_id                       = module.vpc.vpc_id
@@ -72,10 +72,10 @@ module "eks_workers" {
 
   for_each = var.eks_worker_groups
 
-  subnet_ids        = var.private_subnet_ids
-  cluster_name                       = module.label.id
+  subnet_ids   = var.private_subnet_ids
+  cluster_name = module.label.id
   # cluster_name      = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
-  name = var.eks_worker_groups[each.key].name
+  name              = var.eks_worker_groups[each.key].name
   instance_types    = var.eks_worker_groups[each.key].instance_type
   desired_size      = var.eks_worker_groups[each.key].desired_size
   min_size          = var.eks_worker_groups[each.key].min_size
@@ -85,54 +85,54 @@ module "eks_workers" {
 
   tags = local.tags
 
-  bootstrap_extra_args               = "--use-max-pods false"
-  kubelet_extra_args                 = "--node-labels=purpose=ci-worker"
+  bootstrap_extra_args = "--use-max-pods false"
+  kubelet_extra_args   = "--node-labels=purpose=ci-worker"
 
   context = module.this.context
 
   security_group_rules = [
-      {
-        type                     = "egress"
-        from_port                = 0
-        to_port                  = 65535
-        protocol                 = "-1"
-        cidr_blocks              = ["0.0.0.0/0"]
-        source_security_group_id = null
-        description              = "Allow all outbound traffic"
-      },
-      {
-        type                     = "ingress"
-        from_port                = 0
-        to_port                  = 65535
-        protocol                 = "-1"
-        cidr_blocks              = []
-        source_security_group_id = var.eks_worker_security_group_id 
-        description              = "Allow all inbound traffic from Security Group ID of the EKS cluster"
-      }
-    ]
+    {
+      type                     = "egress"
+      from_port                = 0
+      to_port                  = 65535
+      protocol                 = "-1"
+      cidr_blocks              = ["0.0.0.0/0"]
+      source_security_group_id = null
+      description              = "Allow all outbound traffic"
+    },
+    {
+      type                     = "ingress"
+      from_port                = 0
+      to_port                  = 65535
+      protocol                 = "-1"
+      cidr_blocks              = []
+      source_security_group_id = var.eks_worker_security_group_id
+      description              = "Allow all inbound traffic from Security Group ID of the EKS cluster"
+    }
+  ]
 
-    # Auto-scaling policies and CloudWatch metric alarms
-    autoscaling_policies_enabled           = var.autoscaling_policies_enabled
-    cpu_utilization_high_threshold_percent = var.cpu_utilization_high_threshold_percent
-    cpu_utilization_low_threshold_percent  = var.cpu_utilization_low_threshold_percent
+  # Auto-scaling policies and CloudWatch metric alarms
+  autoscaling_policies_enabled           = var.autoscaling_policies_enabled
+  cpu_utilization_high_threshold_percent = var.cpu_utilization_high_threshold_percent
+  cpu_utilization_low_threshold_percent  = var.cpu_utilization_low_threshold_percent
 }
 
 module "eks_node_group" {
   source  = "cloudposse/eks-node-group/aws"
   version = "0.19.0"
 
-  for_each = var.eks_node_groups
-  subnet_ids        = var.private_subnet_ids
-  cluster_name      = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
-  instance_types    = var.eks_node_groups[each.key].instance_types
-  desired_size      = var.eks_node_groups[each.key].desired_size
-  min_size          = var.eks_node_groups[each.key].min_size
-  max_size          = var.eks_node_groups[each.key].max_size
-  disk_size         = var.eks_node_groups[each.key].disk_size
+  for_each       = var.eks_node_groups
+  subnet_ids     = var.private_subnet_ids
+  cluster_name   = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
+  instance_types = var.eks_node_groups[each.key].instance_types
+  desired_size   = var.eks_node_groups[each.key].desired_size
+  min_size       = var.eks_node_groups[each.key].min_size
+  max_size       = var.eks_node_groups[each.key].max_size
+  disk_size      = var.eks_node_groups[each.key].disk_size
 
   kubernetes_labels = var.kubernetes_labels
-  tags = local.tags
+  tags              = local.tags
 
   cluster_autoscaler_enabled = true
-  context = module.this.context
+  context                    = module.this.context
 }

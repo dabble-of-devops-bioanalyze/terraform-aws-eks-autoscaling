@@ -84,12 +84,12 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
-    name = "image.repository"
+    name  = "image.repository"
     value = "us.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler"
   }
 
   set {
-    name = "image.tag"
+    name  = "image.tag"
     value = "v${var.kubernetes_version}"
   }
 }
