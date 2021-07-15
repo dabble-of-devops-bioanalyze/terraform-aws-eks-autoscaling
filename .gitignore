@@ -5,7 +5,13 @@
 *.tfstate
 *.tfstate.*
 .terraform
+**/.terraform
+**/.terraform*
+.terraform.tfstate
+**/.terraform.tfstate
 .terraform.tfstate.lock.info
+.terraform.lock.hcl
+**/.terraform.lock.hcl
 
 # Editor configs
 **/.idea
@@ -19,3 +25,12 @@
 # Crash log files
 crash.log
 test.log
+
+#Credentials for dev
+.aws
+**/.aws
+.ssh
+**/.ssh
+ssh
+.kube
+

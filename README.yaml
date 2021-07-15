@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name: terraform-example-module
+name: terraform-aws-eks-autoscaling-module
 
 # Logo for this project
 #logo: docs/logo.png
@@ -20,7 +20,7 @@ copyrights:
     year: "2020"
 
 # Canonical GitHub repo
-github_repo: cloudposse/terraform-example-module
+github_repo: Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
 
 # Badges to display
 badges:
@@ -36,9 +36,50 @@ badges:
 
 # List any related terraform modules that this module may be used with or that this module depends on.
 related:
+  - name: terraform-aws-eks-workers
+    description: Terraform module to provision an AWS AutoScaling Group, IAM Role, and
+      Security Group for EKS Workers
+    url: https://github.com/cloudposse/terraform-aws-eks-workers
+  - name: terraform-aws-ec2-autoscale-group
+    description: Terraform module to provision Auto Scaling Group and Launch Template
+      on AWS
+    url: https://github.com/cloudposse/terraform-aws-ec2-autoscale-group
+  - name: terraform-aws-ecs-container-definition
+    description: Terraform module to generate well-formed JSON documents (container
+      definitions) that are passed to the  aws_ecs_task_definition Terraform resource
+    url: https://github.com/cloudposse/terraform-aws-ecs-container-definition
+  - name: terraform-aws-ecs-alb-service-task
+    description: Terraform module which implements an ECS service which exposes a web
+      service via ALB
+    url: https://github.com/cloudposse/terraform-aws-ecs-alb-service-task
+  - name: terraform-aws-ecs-web-app
+    description: Terraform module that implements a web app on ECS and supports autoscaling,
+      CI/CD, monitoring, ALB integration, and much more
+    url: https://github.com/cloudposse/terraform-aws-ecs-web-app
+  - name: terraform-aws-ecs-codepipeline
+    description: Terraform module for CI/CD with AWS Code Pipeline and Code Build for
+      ECS
+    url: https://github.com/cloudposse/terraform-aws-ecs-codepipeline
+  - name: terraform-aws-ecs-cloudwatch-autoscaling
+    description: Terraform module to autoscale ECS Service based on CloudWatch metrics
+    url: https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-autoscaling
+  - name: terraform-aws-ecs-cloudwatch-sns-alarms
+    description: Terraform module to create CloudWatch Alarms on ECS Service level metrics
+    url: https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms
+  - name: terraform-aws-ec2-instance
+    description: Terraform module for providing a general purpose EC2 instance
+    url: https://github.com/cloudposse/terraform-aws-ec2-instance
+  - name: terraform-aws-ec2-instance-group
+    description: Terraform module for provisioning multiple general purpose EC2 hosts
+      for stateful applications
+    url: https://github.com/cloudposse/terraform-aws-ec2-instance-group
   - name: "terraform-null-label"
     description: "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to implement a strict naming convention."
     url: "https://github.com/cloudposse/terraform-null-label"
+
+# Short description of this project
+description: Terraform module to provision an [EKS](https://aws.amazon.com/eks/) cluster
+  on AWS. It is meant to be a wrapper around the cloudposse/terraform-aws-eks, cloudposse/terraform-aws-eks-node-group, and terraform-aws-eks-workers. For in depth cluster customization see these modules individually.
 
 # List any resources helpful for someone to get started. For example, link to the hashicorp documentation or AWS documentation.
 references:
@@ -55,10 +96,6 @@ references:
     description: "The required_version setting can be used to constrain which versions of the Terraform CLI can be used with your configuration"
     url: "https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version"
 
-# Short description of this project
-description: |-
-  This is `terraform-example-module` project provides all the scaffolding for a typical well-built Cloud Posse module. It's a template repository you can
-  use when creating new repositories.
 
 # Introduction to the project
 #introduction: |-
@@ -94,5 +131,5 @@ include:
 
 # Contributors to this project
 contributors:
-  - name: "Erik Osterman"
-    github: "osterman"
+  - name: "Jillian Rowe"
+    github: "jerowe"

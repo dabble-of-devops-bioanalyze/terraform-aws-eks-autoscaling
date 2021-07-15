@@ -1,12 +1,13 @@
 variable "region" {
   type        = string
   description = "AWS Region"
+  default = "us-east-1"
 }
 
-variable "availability_zones" {
-  type        = list(string)
-  description = "List of availability zones"
-}
+# variable "availability_zones" {
+#   type        = list(string)
+#   description = "List of availability zones"
+# }
 
 ####################################################################
 # VPC 
@@ -17,20 +18,25 @@ variable "vpc_id" {
   description = "VPC ID for the cluster VPC ID"
 }
 
-variable "private_subnet_ids" {
-  type        = list(string)
-  description = "Private Subnet Ids"
-}
+# variable "private_subnet_ids" {
+#   type        = list(string)
+#   description = "Private Subnet Ids"
+# }
 
-variable "public_subnet_ids" {
+# variable "public_subnet_ids" {
+#   type        = list(string)
+#   description = "Public Subnet Ids"
+# }
+
+variable "subnet_ids" {
   type        = list(string)
   description = "Public Subnet Ids"
 }
 
-variable "eks_worker_security_group_id" {
-  type        = string
-  description = "Security group to allow traffic eks workers to talk to eachother sg-XXXXXXXXX"
-}
+# variable "eks_worker_security_group_id" {
+#   type        = string
+#   description = "Security group to allow traffic eks workers to talk to eachother sg-XXXXXXXXX"
+# }
 
 variable "kubernetes_version" {
   type        = string
@@ -148,6 +154,7 @@ variable "autoscaling_policies_enabled" {
   description = "Whether to create `aws_autoscaling_policy` and `aws_cloudwatch_metric_alarm` resources to control Auto Scaling"
 }
 
+
 variable "eks_worker_groups" {
   description = "EKS Worker Groups"
   type = list(object({
@@ -179,10 +186,12 @@ variable "eks_node_groups" {
     min_size       = number
     max_size       = number
     disk_size      = number
+    name           = string
   }))
   description = "EKS Worker Groups"
   default = [
     {
+      name           = "worker-group-1"
       instance_types = ["t3a.medium"]
       desired_size   = 1
       min_size       = 1

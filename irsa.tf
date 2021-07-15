@@ -1,16 +1,12 @@
-module "iam_assumable_role_admin" {
-  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "3.6.0"
-  create_role                   = true
-  role_name                     = "cluster-autoscaler"
-  provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
-  role_policy_arns              = [aws_iam_policy.cluster_autoscaler.arn]
-  oidc_fully_qualified_subjects = ["system:serviceaccount:${local.k8s_service_account_namespace}:${local.k8s_service_account_name}"]
-}
+// TODO 
+// I am not sure if this is needed or not
+// I think the autoscaling is created through the cloudposse var.enable_autoscaling
+// https://github.com/cloudposse/terraform-aws-ec2-autoscale-group/blob/0.27.0/autoscaling.tf
+
 
 resource "aws_iam_policy" "cluster_autoscaler" {
   name_prefix = "cluster-autoscaler"
-  description = "EKS cluster-autoscaler policy for cluster ${module.eks.cluster_id}"
+  description = "EKS cluster-autoscaler policy for cluster ${module.label.id}"
   policy      = data.aws_iam_policy_document.cluster_autoscaler.json
 }
 
@@ -44,8 +40,8 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
 
     condition {
       test     = "StringEquals"
-      variable = "autoscaling:ResourceTag/kubernetes.io/cluster/${module.eks.cluster_id}"
-      values   = ["owned"]
+      variable = "autoscaling:ResourceTag/kubernetes.io/cluster/${module.label.id}"
+      values   = ["shared"]
     }
 
     condition {

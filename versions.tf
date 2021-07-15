@@ -11,5 +11,21 @@ terraform {
       source  = "hashicorp/random"
       version = ">= 2.2"
     }
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+    null = {
+      source = "hashicorp/null"
+    }
+    template = {
+      source = "hashicorp/template"
+    }
+    helm = {
+      source = "hashicorp/helm"
+    }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
   }
 }
