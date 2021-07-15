@@ -121,7 +121,6 @@ usage: |-
     
     context = module.this.context
   }
-
   ```
 
 # Example usage
