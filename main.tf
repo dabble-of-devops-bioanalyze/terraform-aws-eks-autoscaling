@@ -72,7 +72,7 @@ module "eks_workers" {
   # version = "0.19.0"
 
   # for_each = tomap(var.eks_worker_groups)
-  for_each       = { for eks_worker_group in var.eks_worker_groups : eks_worker_group.name => eks_worker_group }
+  for_each = { for eks_worker_group in var.eks_worker_groups : eks_worker_group.name => eks_worker_group }
 
   vpc_id     = var.vpc_id
   subnet_ids = var.subnet_ids
