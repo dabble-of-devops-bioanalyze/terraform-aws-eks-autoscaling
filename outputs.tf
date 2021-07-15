@@ -36,5 +36,5 @@ output "eks_cluster_workers" {
 
 output "get_kubectl" {
   description = "Get your kubectl "
-  value = "aws eks get-token --cluster-name ${module.eks_cluster.eks_cluster_id}"
+  value       = "aws eks get-token --cluster-name ${module.eks_cluster.eks_cluster_id}"
 }

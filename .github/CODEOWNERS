@@ -13,7 +13,7 @@
 # Cloud Posse must review any changes to GitHub actions
 .github/*     @cloudposse/engineering
 
-# Cloud Posse must review any changes to standard context definition,
+# Cloud Posse must eview any changes to standard context definition,
 # but some changes can be rubber-stamped.
 **/*.tf       @cloudposse/engineering @cloudposse/approvers
 README.yaml   @cloudposse/engineering @cloudposse/approvers
