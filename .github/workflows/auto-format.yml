@@ -31,6 +31,11 @@ jobs:
       shell: bash
       run: |
         make BUILD_HARNESS_PATH=/build-harness PACKAGES_PREFER_HOST=true -f /build-harness/templates/Makefile.build-harness pr/auto-format/host
+
+    - name: Generate README 
+      if: github.event.pull_request.state == 'open'
+      shell: bash
+      run: |
         make BUILD_HARNESS_PATH=/build-harness PACKAGES_PREFER_HOST=true -f /build-harness/templates/Makefile.build-harness readme 
 
     # Commit changes (if any) to the PR branch
@@ -49,13 +54,13 @@ jobs:
           git config --global user.name 'jerowe'
           git config --global user.email 'jillian.e.rowe@gmail.com'
           git add -A
-          git commit -m "Auto Format"
+          git commit -m "Auto Format and README gen"
           # Prevent looping by not pushing changes in response to changes from cloudpossebot
           [[ $SENDER ==  "cloudpossebot" ]] || git push
           # Set status to fail, because the push should trigger another status check,
           # and we use success to indicate the checks are finished.
           printf "::set-output name=%s::%s\n" "changed" "true"
-          exit 1
+          exit 0
         else
           printf "::set-output name=%s::%s\n" "changed" "false"
           echo "No changes detected"
