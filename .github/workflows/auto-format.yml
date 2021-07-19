@@ -50,6 +50,7 @@ jobs:
         set -x
         output=$(git diff --name-only)
 
+
         if [ -n "$output" ]; then
           echo "Changes detected. Pushing to the PR branch"
           git config --global user.name 'jerowe'
