@@ -110,8 +110,16 @@ usage: |-
 
   ```hcl
   module "example" {
-    source = "https://github.com/cloudposse/terraform-example-module.git?ref=master"
-    example = "Hello world!"
+    source = "Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling"
+
+    region = var.region
+    vpc_id = var.vpc_id
+    subnet_ids = var.subnet_ids
+
+    oidc_provider_enabled = true
+    cluster_encryption_config_enabled = true
+    
+    context = module.this.context
   }
   ```
 
