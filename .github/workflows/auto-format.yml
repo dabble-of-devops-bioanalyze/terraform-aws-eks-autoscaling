@@ -31,7 +31,13 @@ jobs:
       shell: bash
       run: |
         make BUILD_HARNESS_PATH=/build-harness PACKAGES_PREFER_HOST=true -f /build-harness/templates/Makefile.build-harness pr/auto-format/host
-        make BUILD_HARNESS_PATH=/build-harness PACKAGES_PREFER_HOST=true -f /build-harness/templates/Makefile.build-harness readme 
+
+    - name: Generate README 
+      if: github.event.pull_request.state == 'open'
+      shell: bash
+      run: |
+        wget https://raw.githubusercontent.com/Dabble-of-DevOps-BioHub/biohub-info/master/docs/README.md.gotmpl -O /tmp/README.md.gotmpl
+        make README_TEMPLATE_FILE=/tmp/README.md.gotmpl BUILD_HARNESS_PATH=/build-harness PACKAGES_PREFER_HOST=true -f /build-harness/templates/Makefile.build-harness readme 
 
     # Commit changes (if any) to the PR branch
     - name: Commit changes to the PR branch
@@ -49,7 +55,7 @@ jobs:
           git config --global user.name 'jerowe'
           git config --global user.email 'jillian.e.rowe@gmail.com'
           git add -A
-          git commit -m "Auto Format"
+          git commit -m "Auto Format and README gen"
           # Prevent looping by not pushing changes in response to changes from cloudpossebot
           [[ $SENDER ==  "cloudpossebot" ]] || git push
           # Set status to fail, because the push should trigger another status check,
