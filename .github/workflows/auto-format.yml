@@ -61,7 +61,7 @@ jobs:
           # Set status to fail, because the push should trigger another status check,
           # and we use success to indicate the checks are finished.
           printf "::set-output name=%s::%s\n" "changed" "true"
-          exit 0
+          exit 1
         else
           printf "::set-output name=%s::%s\n" "changed" "false"
           echo "No changes detected"
