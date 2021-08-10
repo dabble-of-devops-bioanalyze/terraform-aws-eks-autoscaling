@@ -38,6 +38,12 @@ variable "subnet_ids" {
 #   description = "Security group to allow traffic eks workers to talk to eachother sg-XXXXXXXXX"
 # }
 
+variable "eks_workers_role_arns" {
+  type        = list(string)
+  description = "List of Role ARNs of the worker nodes"
+  default     = []
+}
+
 variable "kubernetes_version" {
   type        = string
   default     = "1.17"

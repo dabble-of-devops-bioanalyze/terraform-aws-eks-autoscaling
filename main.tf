@@ -62,6 +62,7 @@ module "eks_cluster" {
   cluster_encryption_config_kms_key_deletion_window_in_days = var.cluster_encryption_config_kms_key_deletion_window_in_days
   cluster_encryption_config_kms_key_policy                  = var.cluster_encryption_config_kms_key_policy
   cluster_encryption_config_resources                       = var.cluster_encryption_config_resources
+  workers_role_arns = var.eks_workers_role_arns
 
   context = module.this.context
 }
