@@ -45,7 +45,7 @@ locals {
 
 module "eks_cluster" {
   source  = "cloudposse/eks-cluster/aws"
-  version = "0.41.0"
+  version = ">= 0.41.0"
 
   region                       = var.region
   vpc_id                       = var.vpc_id
@@ -70,7 +70,7 @@ module "eks_cluster" {
 module "eks_workers" {
   depends_on = [module.eks_cluster]
   source     = "cloudposse/eks-workers/aws"
-  # version = "0.19.0"
+  # version = ">= 0.19.0"
 
   # for_each = tomap(var.eks_worker_groups)
   for_each = { for eks_worker_group in var.eks_worker_groups : eks_worker_group.name => eks_worker_group }
@@ -132,7 +132,7 @@ data "null_data_source" "wait_for_cluster_and_kubernetes_configmap" {
 module "eks_node_group" {
   depends_on = [module.eks_cluster]
   source     = "cloudposse/eks-node-group/aws"
-  version    = "0.19.0"
+  version    = ">= 0.19.0"
 
   for_each       = { for eks_node_group in var.eks_node_groups : eks_node_group.name => eks_node_group }
   subnet_ids     = var.subnet_ids
