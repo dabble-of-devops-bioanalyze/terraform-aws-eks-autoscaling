@@ -8,9 +8,12 @@ module "label" {
   version    = "0.24.1"
   attributes = ["cluster"]
 
+  # https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html
   tags = {
-    "k8s.io/cluster-autoscaler/${module.this.id}" = "true"
-    "k8s.io/cluster-autoscaler/enabled"           = "true"
+    "k8s.io/cluster-autoscaler/${module.this.id}"         = "owned"
+    "k8s.io/cluster-autoscaler/${module.this.id}-cluster" = "owned"
+    "k8s.io/cluster-autoscaler/enabled"                   = "true"
+    "kubernetes.io/cluster/${module.this.id}-cluster"     = "owned"
   }
 
   context = module.this.context
@@ -22,7 +25,7 @@ locals {
   # https://www.terraform.io/docs/providers/aws/guides/eks-getting-started.html#base-vpc-networking
 
   tags = merge(module.label.tags,
-  map("kubernetes.io/cluster/${module.label.id}", "shared"))
+  map("kubernetes.io/cluster/${module.label.id}-cluster", "shared"))
 
   # Unfortunately, most_recent (https://github.com/cloudposse/terraform-aws-eks-workers/blob/34a43c25624a6efb3ba5d2770a601d7cb3c0d391/main.tf#L141)
   # variable does not work as expected, if you are not going to use custom ami you should
@@ -40,7 +43,7 @@ locals {
   }
 
   k8s_service_account_namespace = "kube-system"
-  k8s_service_account_name      = "cluster-autoscaler-aws-cluster-autoscaler-chart"
+  k8s_service_account_name      = "cluster-autoscaler-aws-cluster-autoscaler"
 }
 
 module "eks_cluster" {
@@ -70,15 +73,14 @@ module "eks_cluster" {
 module "eks_workers" {
   depends_on = [module.eks_cluster]
   source     = "cloudposse/eks-workers/aws"
-  version = "0.19.2"
+  version    = "0.19.2"
 
 
   # for_each = tomap(var.eks_worker_groups)
   for_each = { for eks_worker_group in var.eks_worker_groups : eks_worker_group.name => eks_worker_group }
 
-  vpc_id     = var.vpc_id
-  subnet_ids = var.subnet_ids
-  # cluster_name = module.label.id
+  vpc_id                             = var.vpc_id
+  subnet_ids                         = var.subnet_ids
   cluster_name                       = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
   cluster_endpoint                   = module.eks_cluster.eks_cluster_endpoint
   cluster_certificate_authority_data = module.eks_cluster.eks_cluster_certificate_authority_data
@@ -90,7 +92,13 @@ module "eks_workers" {
 
   tags = local.tags
 
-  bootstrap_extra_args = "--use-max-pods false"
+  autoscaling_group_tags = {
+    "k8s.io/cluster-autoscaler/${module.this.id}-cluster" = "owned"
+    "k8s.io/cluster-autoscaler/${module.this.id}"         = "owned"
+    "kubernetes.io/cluster/${module.this.id}-cluster"     = "owned"
+    "k8s.io/cluster-autoscaler/enabled"                   = "true"
+  }
+  # bootstrap_extra_args = "--use-max-pods false"
   # kubelet_extra_args   = "--node-labels=purpose=ci-worker"
 
   context = module.this.context
@@ -118,7 +126,7 @@ module "eks_workers" {
   ]
 
   # Auto-scaling policies and CloudWatch metric alarms
-  autoscaling_policies_enabled = var.autoscaling_policies_enabled
+  autoscaling_policies_enabled = var.eks_worker_group_autoscaling_policies_enabled
   # cpu_utilization_high_threshold_percent = var.cpu_utilization_high_threshold_percent
   # cpu_utilization_low_threshold_percent  = var.cpu_utilization_low_threshold_percent
 }
@@ -145,9 +153,10 @@ module "eks_node_group" {
   disk_size      = each.value.disk_size
 
   kubernetes_labels = var.kubernetes_labels
-  tags              = local.tags
+  # kubernetes_labels = local.tags
+  tags = local.tags
 
-  cluster_autoscaler_enabled = true
+  cluster_autoscaler_enabled = var.eks_node_group_autoscaling_enabled
   context                    = module.this.context
 }
 

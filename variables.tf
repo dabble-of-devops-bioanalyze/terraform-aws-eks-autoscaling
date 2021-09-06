@@ -154,9 +154,9 @@ variable "cluster_encryption_config_resources" {
 # EKS Worker Groups 
 ####################################################################
 
-variable "autoscaling_policies_enabled" {
+variable "eks_worker_group_autoscaling_policies_enabled" {
   type        = bool
-  default     = true
+  default     = false
   description = "Whether to create `aws_autoscaling_policy` and `aws_cloudwatch_metric_alarm` resources to control Auto Scaling"
 }
 
@@ -205,4 +205,9 @@ variable "eks_node_groups" {
       disk_size      = 20
     }
   ]
+}
+
+variable "eks_node_group_autoscaling_enabled" {
+  type    = bool
+  default = false
 }
