@@ -171,13 +171,13 @@ variable "eks_worker_groups" {
     max_size      = number
   }))
   default = [
-    {
-      name          = "t3a_medium"
-      instance_type = "t3a.medium"
-      desired_size  = 1
-      min_size      = 1
-      max_size      = 2
-    }
+    # {
+    #   name          = "t3a_medium"
+    #   instance_type = "t3a.medium"
+    #   desired_size  = 1
+    #   min_size      = 1
+    #   max_size      = 2
+    # }
   ]
 }
 
