@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name: terraform-aws-eks-autoscaling-module
+name: terraform-aws-eks-autoscaling
 
 # Logo for this project
 #logo: docs/logo.png
@@ -20,7 +20,7 @@ copyrights:
     year: "2020"
 
 # Canonical GitHub repo
-github_repo: Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
+github_repo: dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
 
 # Badges to display
 badges:
@@ -110,7 +110,7 @@ usage: |-
 
   ```hcl
   module "example" {
-    source = "Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling"
+    source = "dabble-of-devops-biodeploy/eks-autoscaling/aws"
 
     region = var.region
     vpc_id = var.vpc_id
