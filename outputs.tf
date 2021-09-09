@@ -31,23 +31,13 @@ output "eks_cluster_identity_oidc_issuer" {
   value       = module.eks_cluster.eks_cluster_identity_oidc_issuer
 }
 
-# output "eks_cluster_identity_oidc_issuer" {
-#   description = "The OIDC Identity issuer for the cluster"
-#   value       = join("", aws_eks_cluster.default.*.identity.0.oidc.0.issuer)
-# }
-
-# output "cluster_oidc_issuer_url" {
-#   description = "The URL on the EKS cluster OIDC Issuer"
-#   value       = flatten(concat(aws_eks_cluster.this[*].identity[*].oidc.0.issuer, [""]))[0]
-# }
-
 output "eks_cluster_node_groups" {
   value = module.eks_node_group
 }
 
-output "eks_cluster_workers" {
-  value = module.eks_workers
-}
+# output "eks_cluster_workers" {
+#   value = module.eks_workers
+# }
 
 output "get_kubectl" {
   description = "Get your kubectl "

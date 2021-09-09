@@ -161,25 +161,27 @@ variable "eks_worker_group_autoscaling_policies_enabled" {
 }
 
 
-variable "eks_worker_groups" {
-  description = "EKS Worker Groups"
-  type = list(object({
-    name          = string
-    instance_type = string
-    desired_size  = number
-    min_size      = number
-    max_size      = number
-  }))
-  default = [
-    # {
-    #   name          = "t3a_medium"
-    #   instance_type = "t3a.medium"
-    #   desired_size  = 1
-    #   min_size      = 1
-    #   max_size      = 2
-    # }
-  ]
-}
+# Worker group nodes are not joining the cluster. 
+# Will fix in later release
+# variable "eks_worker_groups" {
+#   description = "EKS Worker Groups"
+#   type = list(object({
+#     name          = string
+#     instance_type = string
+#     desired_size  = number
+#     min_size      = number
+#     max_size      = number
+#   }))
+#   default = [
+#     # {
+#     #   name          = "t3a_medium"
+#     #   instance_type = "t3a.medium"
+#     #   desired_size  = 1
+#     #   min_size      = 1
+#     #   max_size      = 2
+#     # }
+#   ]
+# }
 
 ####################################################################
 # EKS Node Groups 

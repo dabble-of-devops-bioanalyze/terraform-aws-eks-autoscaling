@@ -70,66 +70,66 @@ module "eks_cluster" {
   context = module.this.context
 }
 
-module "eks_workers" {
-  depends_on = [module.eks_cluster]
-  source     = "cloudposse/eks-workers/aws"
-  version    = "0.19.2"
+# module "eks_workers" {
+#   depends_on = [module.eks_cluster]
+#   source     = "cloudposse/eks-workers/aws"
+#   version    = "0.19.2"
 
 
-  # for_each = tomap(var.eks_worker_groups)
-  for_each = { for eks_worker_group in var.eks_worker_groups : eks_worker_group.name => eks_worker_group }
+#   # for_each = tomap(var.eks_worker_groups)
+#   for_each = { for eks_worker_group in var.eks_worker_groups : eks_worker_group.name => eks_worker_group }
 
-  vpc_id                             = var.vpc_id
-  subnet_ids                         = var.subnet_ids
-  cluster_name                       = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
-  cluster_endpoint                   = module.eks_cluster.eks_cluster_endpoint
-  cluster_certificate_authority_data = module.eks_cluster.eks_cluster_certificate_authority_data
+#   vpc_id                             = var.vpc_id
+#   subnet_ids                         = var.subnet_ids
+#   cluster_name                       = data.null_data_source.wait_for_cluster_and_kubernetes_configmap.outputs["cluster_name"]
+#   cluster_endpoint                   = module.eks_cluster.eks_cluster_endpoint
+#   cluster_certificate_authority_data = module.eks_cluster.eks_cluster_certificate_authority_data
 
-  name          = "${module.label.id}-${each.value.name}"
-  instance_type = each.value.instance_type
-  min_size      = each.value.min_size
-  max_size      = each.value.max_size
+#   name          = "${module.label.id}-${each.value.name}"
+#   instance_type = each.value.instance_type
+#   min_size      = each.value.min_size
+#   max_size      = each.value.max_size
 
-  tags = local.tags
+#   tags = local.tags
 
-  autoscaling_group_tags = {
-    "k8s.io/cluster-autoscaler/${module.this.id}-cluster" = "owned"
-    "k8s.io/cluster-autoscaler/${module.this.id}"         = "owned"
-    "kubernetes.io/cluster/${module.this.id}-cluster"     = "owned"
-    "k8s.io/cluster-autoscaler/enabled"                   = "true"
-  }
-  # bootstrap_extra_args = "--use-max-pods false"
-  # kubelet_extra_args   = "--node-labels=purpose=ci-worker"
+#   autoscaling_group_tags = {
+#     "k8s.io/cluster-autoscaler/${module.this.id}-cluster" = "owned"
+#     "k8s.io/cluster-autoscaler/${module.this.id}"         = "owned"
+#     "kubernetes.io/cluster/${module.this.id}-cluster"     = "owned"
+#     "k8s.io/cluster-autoscaler/enabled"                   = "true"
+#   }
+#   # bootstrap_extra_args = "--use-max-pods false"
+#   # kubelet_extra_args   = "--node-labels=purpose=ci-worker"
 
-  context = module.this.context
+#   context = module.this.context
 
-  security_group_rules = [
-    {
-      type                     = "egress"
-      from_port                = 0
-      to_port                  = 65535
-      protocol                 = "-1"
-      cidr_blocks              = ["0.0.0.0/0"]
-      source_security_group_id = null
-      description              = "Allow all outbound traffic"
-    },
-    {
-      type        = "ingress"
-      from_port   = 0
-      to_port     = 65535
-      protocol    = "-1"
-      cidr_blocks = []
-      # source_security_group_id = var.eks_worker_security_group_id
-      source_security_group_id = module.eks_cluster.security_group_id
-      description              = "Allow all inbound traffic from Security Group ID of the EKS cluster"
-    }
-  ]
+#   security_group_rules = [
+#     {
+#       type                     = "egress"
+#       from_port                = 0
+#       to_port                  = 65535
+#       protocol                 = "-1"
+#       cidr_blocks              = ["0.0.0.0/0"]
+#       source_security_group_id = null
+#       description              = "Allow all outbound traffic"
+#     },
+#     {
+#       type        = "ingress"
+#       from_port   = 0
+#       to_port     = 65535
+#       protocol    = "-1"
+#       cidr_blocks = []
+#       # source_security_group_id = var.eks_worker_security_group_id
+#       source_security_group_id = module.eks_cluster.security_group_id
+#       description              = "Allow all inbound traffic from Security Group ID of the EKS cluster"
+#     }
+#   ]
 
-  # Auto-scaling policies and CloudWatch metric alarms
-  autoscaling_policies_enabled = var.eks_worker_group_autoscaling_policies_enabled
-  # cpu_utilization_high_threshold_percent = var.cpu_utilization_high_threshold_percent
-  # cpu_utilization_low_threshold_percent  = var.cpu_utilization_low_threshold_percent
-}
+#   # Auto-scaling policies and CloudWatch metric alarms
+#   autoscaling_policies_enabled = var.eks_worker_group_autoscaling_policies_enabled
+#   # cpu_utilization_high_threshold_percent = var.cpu_utilization_high_threshold_percent
+#   # cpu_utilization_low_threshold_percent  = var.cpu_utilization_low_threshold_percent
+# }
 
 data "null_data_source" "wait_for_cluster_and_kubernetes_configmap" {
   inputs = {
