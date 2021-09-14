@@ -14,7 +14,7 @@ module "iam_assumable_role_admin" {
   source       = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version      = "3.6.0"
   create_role  = true
-  role_name    = "cluster-autoscaler"
+  role_name    = "cluster-autoscaler-${module.eks_cluster.eks_cluster_id}"
   provider_url = replace(local.eks_cluster_oidc_issuer_url, "https://", "")
 
   role_policy_arns = [
@@ -25,7 +25,7 @@ module "iam_assumable_role_admin" {
 
 
 resource "aws_iam_policy" "cluster_autoscaler" {
-  name_prefix = "cluster-autoscaler"
+  name_prefix = "cluster-autoscaler-${module.eks_cluster.eks_cluster_id}"
   description = "EKS cluster-autoscaler policy for cluster ${module.eks_cluster.eks_cluster_id}"
   policy      = data.aws_iam_policy_document.cluster_autoscaler.json
 }
