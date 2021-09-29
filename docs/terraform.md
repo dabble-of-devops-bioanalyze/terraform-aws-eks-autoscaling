@@ -23,7 +23,6 @@
 |------|--------|---------|
 | <a name="module_eks_cluster"></a> [eks\_cluster](#module\_eks\_cluster) | cloudposse/eks-cluster/aws | >= 0.41.0 |
 | <a name="module_eks_node_group"></a> [eks\_node\_group](#module\_eks\_node\_group) | cloudposse/eks-node-group/aws | 0.24.0 |
-| <a name="module_eks_workers"></a> [eks\_workers](#module\_eks\_workers) | cloudposse/eks-workers/aws | 0.19.2 |
 | <a name="module_iam_assumable_role_admin"></a> [iam\_assumable\_role\_admin](#module\_iam\_assumable\_role\_admin) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 3.6.0 |
 | <a name="module_label"></a> [label](#module\_label) | cloudposse/label/null | 0.24.1 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.24.1 |
@@ -61,7 +60,6 @@
 | <a name="input_eks_node_group_autoscaling_enabled"></a> [eks\_node\_group\_autoscaling\_enabled](#input\_eks\_node\_group\_autoscaling\_enabled) | n/a | `bool` | `false` | no |
 | <a name="input_eks_node_groups"></a> [eks\_node\_groups](#input\_eks\_node\_groups) | EKS Worker Groups | <pre>list(object({<br>    instance_types = list(string)<br>    desired_size   = number<br>    min_size       = number<br>    max_size       = number<br>    disk_size      = number<br>    name           = string<br>  }))</pre> | <pre>[<br>  {<br>    "desired_size": 1,<br>    "disk_size": 20,<br>    "instance_types": [<br>      "t3a.medium"<br>    ],<br>    "max_size": 2,<br>    "min_size": 1,<br>    "name": "worker-group-1"<br>  }<br>]</pre> | no |
 | <a name="input_eks_worker_group_autoscaling_policies_enabled"></a> [eks\_worker\_group\_autoscaling\_policies\_enabled](#input\_eks\_worker\_group\_autoscaling\_policies\_enabled) | Whether to create `aws_autoscaling_policy` and `aws_cloudwatch_metric_alarm` resources to control Auto Scaling | `bool` | `false` | no |
-| <a name="input_eks_worker_groups"></a> [eks\_worker\_groups](#input\_eks\_worker\_groups) | EKS Worker Groups | <pre>list(object({<br>    name          = string<br>    instance_type = string<br>    desired_size  = number<br>    min_size      = number<br>    max_size      = number<br>  }))</pre> | <pre>[<br>  {<br>    "desired_size": 1,<br>    "instance_type": "t3a.medium",<br>    "max_size": 2,<br>    "min_size": 1,<br>    "name": "t3a_medium"<br>  }<br>]</pre> | no |
 | <a name="input_eks_workers_role_arns"></a> [eks\_workers\_role\_arns](#input\_eks\_workers\_role\_arns) | List of Role ARNs of the worker nodes | `list(string)` | `[]` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources | `bool` | `null` | no |
 | <a name="input_enabled_cluster_log_types"></a> [enabled\_cluster\_log\_types](#input\_enabled\_cluster\_log\_types) | A list of the desired control plane logging to enable. For more information, see https://docs.aws.amazon.com/en_us/eks/latest/userguide/control-plane-logs.html. Possible values [`api`, `audit`, `authenticator`, `controllerManager`, `scheduler`] | `list(string)` | <pre>[<br>  "audit"<br>]</pre> | no |
@@ -98,7 +96,6 @@
 | <a name="output_eks_cluster_identity_oidc_issuer"></a> [eks\_cluster\_identity\_oidc\_issuer](#output\_eks\_cluster\_identity\_oidc\_issuer) | The OIDC Identity issuer for the cluster |
 | <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | n/a |
 | <a name="output_eks_cluster_node_groups"></a> [eks\_cluster\_node\_groups](#output\_eks\_cluster\_node\_groups) | n/a |
-| <a name="output_eks_cluster_workers"></a> [eks\_cluster\_workers](#output\_eks\_cluster\_workers) | n/a |
 | <a name="output_get_kubectl"></a> [get\_kubectl](#output\_get\_kubectl) | Get your kubectl |
 | <a name="output_id"></a> [id](#output\_id) | ID of the created example |
 | <a name="output_region"></a> [region](#output\_region) | AWS Region of the cluster |

@@ -1,11 +1,9 @@
 
 <!-- markdownlint-disable -->
-# terraform-aws-eks-autoscaling-module
-
- [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-example-module.svg)](https://github.com/cloudposse/terraform-example-module/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com) [![Discourse Forum](https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg)](https://ask.sweetops.com/)
+# terraform-aws-eks-autoscaling [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-example-module.svg)](https://github.com/cloudposse/terraform-example-module/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com) [![Discourse Forum](https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg)](https://ask.sweetops.com/)
 <!-- markdownlint-restore -->
 
-![BioHub Logo](https://raw.githubusercontent.com/Dabble-of-DevOps-BioHub/biohub-info/master/logos/BioHub_v2-01.jpg)
+![BioAnalyze Logo](https://raw.githubusercontent.com/Dabble-of-DevOps-BioAnalyze/biohub-info/master/logos/BioAnalyze_v2-01.jpg)
 
 <!--
 
@@ -32,7 +30,7 @@ Terraform module to provision an [EKS](https://aws.amazon.com/eks/) cluster on A
 
 ---
 
-This project is part of the ["BioHub"](https://www.dabbleofdevops.com/biohub) project, which aims to make High Performance Compute Architecture accessible to everyone.
+This project is part of the ["BioAnalyze"](https://www.dabbleofdevops.com/biohub) project, which aims to make High Performance Compute Architecture accessible to everyone.
 
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
@@ -44,7 +42,7 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 ## Data Science Infrastructure on AWS
 
-![BioHub Logo](https://raw.githubusercontent.com/Dabble-of-DevOps-BioHub/biohub-info/master/images/BioHub-Ecosystem-Data-Visualization.jpeg)
+![BioAnalyze Logo](https://raw.githubusercontent.com/dabble-of-devops-bioanalyze/biohub-info/master/images/BioAnalyze-Ecosystem-Data-Visualization.jpeg)
 
 
 
@@ -69,7 +67,7 @@ For automated tests of the complete example using [bats](https://github.com/bats
 
 ```hcl
 module "example" {
-  source = "Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling"
+  source = "dabble-of-devops-biodeploy/eks-autoscaling/aws"
 
   region = var.region
   vpc_id = var.vpc_id
@@ -127,7 +125,6 @@ Available targets:
 |------|--------|---------|
 | <a name="module_eks_cluster"></a> [eks\_cluster](#module\_eks\_cluster) | cloudposse/eks-cluster/aws | >= 0.41.0 |
 | <a name="module_eks_node_group"></a> [eks\_node\_group](#module\_eks\_node\_group) | cloudposse/eks-node-group/aws | 0.24.0 |
-| <a name="module_eks_workers"></a> [eks\_workers](#module\_eks\_workers) | cloudposse/eks-workers/aws | 0.19.2 |
 | <a name="module_iam_assumable_role_admin"></a> [iam\_assumable\_role\_admin](#module\_iam\_assumable\_role\_admin) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 3.6.0 |
 | <a name="module_label"></a> [label](#module\_label) | cloudposse/label/null | 0.24.1 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.24.1 |
@@ -165,7 +162,6 @@ Available targets:
 | <a name="input_eks_node_group_autoscaling_enabled"></a> [eks\_node\_group\_autoscaling\_enabled](#input\_eks\_node\_group\_autoscaling\_enabled) | n/a | `bool` | `false` | no |
 | <a name="input_eks_node_groups"></a> [eks\_node\_groups](#input\_eks\_node\_groups) | EKS Worker Groups | <pre>list(object({<br>    instance_types = list(string)<br>    desired_size   = number<br>    min_size       = number<br>    max_size       = number<br>    disk_size      = number<br>    name           = string<br>  }))</pre> | <pre>[<br>  {<br>    "desired_size": 1,<br>    "disk_size": 20,<br>    "instance_types": [<br>      "t3a.medium"<br>    ],<br>    "max_size": 2,<br>    "min_size": 1,<br>    "name": "worker-group-1"<br>  }<br>]</pre> | no |
 | <a name="input_eks_worker_group_autoscaling_policies_enabled"></a> [eks\_worker\_group\_autoscaling\_policies\_enabled](#input\_eks\_worker\_group\_autoscaling\_policies\_enabled) | Whether to create `aws_autoscaling_policy` and `aws_cloudwatch_metric_alarm` resources to control Auto Scaling | `bool` | `false` | no |
-| <a name="input_eks_worker_groups"></a> [eks\_worker\_groups](#input\_eks\_worker\_groups) | EKS Worker Groups | <pre>list(object({<br>    name          = string<br>    instance_type = string<br>    desired_size  = number<br>    min_size      = number<br>    max_size      = number<br>  }))</pre> | <pre>[<br>  {<br>    "desired_size": 1,<br>    "instance_type": "t3a.medium",<br>    "max_size": 2,<br>    "min_size": 1,<br>    "name": "t3a_medium"<br>  }<br>]</pre> | no |
 | <a name="input_eks_workers_role_arns"></a> [eks\_workers\_role\_arns](#input\_eks\_workers\_role\_arns) | List of Role ARNs of the worker nodes | `list(string)` | `[]` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources | `bool` | `null` | no |
 | <a name="input_enabled_cluster_log_types"></a> [enabled\_cluster\_log\_types](#input\_enabled\_cluster\_log\_types) | A list of the desired control plane logging to enable. For more information, see https://docs.aws.amazon.com/en_us/eks/latest/userguide/control-plane-logs.html. Possible values [`api`, `audit`, `authenticator`, `controllerManager`, `scheduler`] | `list(string)` | <pre>[<br>  "audit"<br>]</pre> | no |
@@ -202,7 +198,6 @@ Available targets:
 | <a name="output_eks_cluster_identity_oidc_issuer"></a> [eks\_cluster\_identity\_oidc\_issuer](#output\_eks\_cluster\_identity\_oidc\_issuer) | The OIDC Identity issuer for the cluster |
 | <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | n/a |
 | <a name="output_eks_cluster_node_groups"></a> [eks\_cluster\_node\_groups](#output\_eks\_cluster\_node\_groups) | n/a |
-| <a name="output_eks_cluster_workers"></a> [eks\_cluster\_workers](#output\_eks\_cluster\_workers) | n/a |
 | <a name="output_get_kubectl"></a> [get\_kubectl](#output\_get\_kubectl) | Get your kubectl |
 | <a name="output_id"></a> [id](#output\_id) | ID of the created example |
 | <a name="output_region"></a> [region](#output\_region) | AWS Region of the cluster |
@@ -213,7 +208,7 @@ Available targets:
 
 ## Share the Love
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling)! (it helps **a lot**)
+Like this project? Please give it a ★ on [our GitHub](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling)! (it helps **a lot**)
 
 
 
@@ -248,7 +243,7 @@ For additional context, refer to some of these links.
 
 **Got a question?** We got answers.
 
-File a GitHub [issue](https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling/issues), send us an jillian@dabbleofdevops.com.
+File a GitHub [issue](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/issues), send us an jillian@dabbleofdevops.com.
 
 ## Bioinformatics Infrastructure on AWS for Startups
 
@@ -272,7 +267,7 @@ Work directly with me via email, slack, and video conferencing.
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/issues) to report any bugs or file feature requests.
 
 ### Developing
 
@@ -350,32 +345,32 @@ All other trademarks referenced herein are the property of their respective owne
 Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
 
   [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=docs
-  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=website
-  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=github
-  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=jobs
-  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=hire
-  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=linkedin
-  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=testimonial
-  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=office_hours
-  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=discourse
-  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=email
-  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=commercial_support
-  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=we_love_open_source
-  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=terraform_modules
+  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=docs
+  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=website
+  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=github
+  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=jobs
+  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=hire
+  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=slack
+  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=linkedin
+  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=twitter
+  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=testimonial
+  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=office_hours
+  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=newsletter
+  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=discourse
+  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=email
+  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=commercial_support
+  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=we_love_open_source
+  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=terraform_modules
   [readme_header_img]: https://cloudposse.com/readme/header/img
-  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=readme_header_link
+  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=readme_header_link
   [readme_footer_img]: https://cloudposse.com/readme/footer/img
-  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=readme_footer_link
+  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=readme_footer_link
   [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-eks-autoscaling-module&url=https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-eks-autoscaling-module&url=https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
-  [share_email]: mailto:?subject=terraform-aws-eks-autoscaling-module&body=https://github.com/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling
-  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/Dabble-of-DevOps-BioHub/terraform-aws-eks-autoscaling?pixel&cs=github&cm=readme&an=terraform-aws-eks-autoscaling
+  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=readme_commercial_support_link
+  [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-eks-autoscaling&url=https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
+  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-eks-autoscaling&url=https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
+  [share_reddit]: https://reddit.com/submit/?url=https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
+  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
+  [share_googleplus]: https://plus.google.com/share?url=https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
+  [share_email]: mailto:?subject=terraform-aws-eks-autoscaling&body=https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling
+  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling?pixel&cs=github&cm=readme&an=terraform-aws-eks-autoscaling

@@ -33,4 +33,4 @@ test.log
 **/.ssh
 ssh
 .kube
-
+**/.kube
