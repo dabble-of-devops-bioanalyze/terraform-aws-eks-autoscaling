@@ -161,7 +161,7 @@ module "eks_node_group" {
 }
 
 ##################################################
-# EKS Cluster Data 
+# EKS Cluster Data
 # These are here more for demonstrative purposes
 # And also to test that each of the providers can connect
 ##################################################
@@ -207,5 +207,24 @@ resource "null_resource" "kubectl_update" {
       AWS_REGION = var.region
       NAME       = module.eks_cluster.eks_cluster_id
     }
+  }
+}
+
+resource "helm_release" "cert-manager" {
+  count = var.install_cert_manager == true ? 1 : 0
+  depends_on = [
+    null_resource.kubectl_update,
+  ]
+  name             = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  version          = var.cert_manager_version
+  chart            = "cert-manager"
+  namespace        = "cert-manager"
+  create_namespace = true
+  wait             = true
+
+  set {
+    name  = "installCRDs"
+    value = "true"
   }
 }

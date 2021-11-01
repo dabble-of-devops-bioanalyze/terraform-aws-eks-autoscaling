@@ -10,7 +10,7 @@ variable "region" {
 # }
 
 ####################################################################
-# VPC 
+# VPC
 ####################################################################
 
 variable "vpc_id" {
@@ -105,7 +105,7 @@ variable "local_exec_interpreter" {
 }
 
 ####################################################################
-# EKS 
+# EKS
 ####################################################################
 
 variable "kubernetes_labels" {
@@ -151,7 +151,7 @@ variable "cluster_encryption_config_resources" {
 }
 
 ####################################################################
-# EKS Worker Groups 
+# EKS Worker Groups
 ####################################################################
 
 variable "eks_worker_group_autoscaling_policies_enabled" {
@@ -161,7 +161,7 @@ variable "eks_worker_group_autoscaling_policies_enabled" {
 }
 
 
-# Worker group nodes are not joining the cluster. 
+# Worker group nodes are not joining the cluster.
 # Will fix in later release
 # variable "eks_worker_groups" {
 #   description = "EKS Worker Groups"
@@ -184,7 +184,7 @@ variable "eks_worker_group_autoscaling_policies_enabled" {
 # }
 
 ####################################################################
-# EKS Node Groups 
+# EKS Node Groups
 ####################################################################
 
 variable "eks_node_groups" {
@@ -212,4 +212,15 @@ variable "eks_node_groups" {
 variable "eks_node_group_autoscaling_enabled" {
   type    = bool
   default = false
+}
+
+variable "install_cert_manager" {
+  type    = bool
+  default = true
+}
+
+variable "cert_manager_version" {
+  description = "Cert Manager Helm Chart Version. If you are changing either this version of the kubernetes version make sure that the versions are compatible. For more information see: https://cert-manager.io/docs/installation/helm/"
+  type        = string
+  default     = "v1.5.4"
 }
