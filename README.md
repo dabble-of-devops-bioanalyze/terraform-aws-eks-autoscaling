@@ -75,7 +75,7 @@ module "example" {
 
   oidc_provider_enabled = true
   cluster_encryption_config_enabled = true
-  
+
   context = module.this.context
 }
 ```

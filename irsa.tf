@@ -1,9 +1,9 @@
-// TODO 
+// TODO
 // I am not sure if this is needed or not
-// I think the autoscaling is created through the cloudposse autoscaling policies 
+// I think the autoscaling is created through the cloudposse autoscaling policies
 // https://github.com/cloudposse/terraform-aws-ec2-autoscale-group/blob/0.27.0/autoscaling.tf
 // But for now we'll keep the IRSA
-// Instructions are the same as in the main irsa example. We're just using a helm_resource to deploy the autoscaling charts 
+// Instructions are the same as in the main irsa example. We're just using a helm_resource to deploy the autoscaling charts
 // https://github.com/terraform-aws-modules/terraform-aws-eks/tree/v17.11.0/examples/irsa
 
 locals {
@@ -111,4 +111,3 @@ resource "helm_release" "autoscaler" {
     data.template_file.autoscaler.rendered
   ]
 }
-

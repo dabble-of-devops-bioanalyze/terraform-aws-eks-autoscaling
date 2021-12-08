@@ -46,7 +46,7 @@ variable "eks_workers_role_arns" {
 
 variable "kubernetes_version" {
   type        = string
-  default     = "1.17"
+  default     = "1.21"
   description = "Desired Kubernetes master version. If you do not specify a value, the latest available version is used"
 }
 
@@ -214,6 +214,12 @@ variable "eks_node_group_autoscaling_enabled" {
   default = false
 }
 
+variable "enable_ssl" {
+  description = "enable ssl"
+  type        = bool
+  default     = true
+}
+
 variable "install_cert_manager" {
   type    = bool
   default = true
@@ -223,4 +229,23 @@ variable "cert_manager_version" {
   description = "Cert Manager Helm Chart Version. If you are changing either this version of the kubernetes version make sure that the versions are compatible. For more information see: https://cert-manager.io/docs/installation/helm/"
   type        = string
   default     = "v1.5.4"
+}
+
+variable "install_ingress" {
+  description = "Install the nginx ingress yes/no"
+  type        = bool
+  default     = "true"
+}
+
+variable "nginx_ingress_namespace" {
+  description = "install the nginx ingress"
+  type        = string
+  default     = "nginx-ingress"
+}
+
+
+variable "letsencrypt_email" {
+  description = "email"
+  type        = string
+  default     = ""
 }

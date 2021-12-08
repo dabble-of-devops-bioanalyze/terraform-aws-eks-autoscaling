@@ -3,7 +3,7 @@
 #k8s_service_account_name      = "cluster-autoscaler-aws-cluster-autoscaler"
 
 cloudProvider: aws
-awsRegion: ${region} 
+awsRegion: ${region}
 
 rbac:
   create: true

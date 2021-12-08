@@ -178,7 +178,7 @@ provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
-  load_config_file       = false
+  # load_config_file       = false
   //  version = "~> 1.11"
 }
 
@@ -227,4 +227,21 @@ resource "helm_release" "cert-manager" {
     name  = "installCRDs"
     value = "true"
   }
+}
+
+module "helm_ingress" {
+  count = var.enable_ssl == true && var.install_ingress ? 1 : 0
+  # source                  = "dabble-of-devops-bioanalyze/eks-bitnami-nginx-ingress/aws"
+  # version                 = ">= 0.1.0"
+  source            = "/root/terraform-recipes/terraform-aws-eks-bitnami-nginx-ingress"
+  letsencrypt_email = var.letsencrypt_email
+  # helm_release_values_dir = var.helm_release_values_dir
+  helm_release_name = "nginx-ingress"
+  # helm_release_namespace  = var.helm_release_namespace
+  render_cluster_issuer = false
+}
+
+output "helm_ingress" {
+  description = "Get the helm ingress"
+  value       = module.helm_ingress
 }
