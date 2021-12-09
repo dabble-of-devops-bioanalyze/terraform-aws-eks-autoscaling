@@ -230,10 +230,9 @@ resource "helm_release" "cert-manager" {
 }
 
 module "helm_ingress" {
-  count = var.enable_ssl == true && var.install_ingress ? 1 : 0
-  # source                  = "dabble-of-devops-bioanalyze/eks-bitnami-nginx-ingress/aws"
-  # version                 = ">= 0.1.0"
-  source            = "/root/terraform-recipes/terraform-aws-eks-bitnami-nginx-ingress"
+  count             = var.enable_ssl == true && var.install_ingress ? 1 : 0
+  source            = "dabble-of-devops-bioanalyze/eks-bitnami-nginx-ingress/aws"
+  version           = ">= 0.2.0"
   letsencrypt_email = var.letsencrypt_email
   # helm_release_values_dir = var.helm_release_values_dir
   helm_release_name = "nginx-ingress"
