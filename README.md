@@ -3,7 +3,9 @@
 # terraform-aws-eks-autoscaling [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-example-module.svg)](https://github.com/cloudposse/terraform-example-module/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com) [![Discourse Forum](https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg)](https://ask.sweetops.com/)
 <!-- markdownlint-restore -->
 
-![BioAnalyze Logo](https://raw.githubusercontent.com/Dabble-of-DevOps-BioAnalyze/biohub-info/master/logos/BioAnalyze_v2-01.jpg)
+[![README Header][readme_header_img]][readme_header_link]
+
+[![Cloud Posse][logo]](https://cpco.io/homepage)
 
 <!--
 
@@ -30,7 +32,17 @@ Terraform module to provision an [EKS](https://aws.amazon.com/eks/) cluster on A
 
 ---
 
-This project is part of the ["BioAnalyze"](https://www.dabbleofdevops.com/biohub) project, which aims to make High Performance Compute Architecture accessible to everyone.
+This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+[<img align="right" title="Share via Email" src="https://docs.cloudposse.com/images/ionicons/ios-email-outline-2.0.1-16x16-999999.svg"/>][share_email]
+[<img align="right" title="Share on Google+" src="https://docs.cloudposse.com/images/ionicons/social-googleplus-outline-2.0.1-16x16-999999.svg" />][share_googleplus]
+[<img align="right" title="Share on Facebook" src="https://docs.cloudposse.com/images/ionicons/social-facebook-outline-2.0.1-16x16-999999.svg" />][share_facebook]
+[<img align="right" title="Share on Reddit" src="https://docs.cloudposse.com/images/ionicons/social-reddit-outline-2.0.1-16x16-999999.svg" />][share_reddit]
+[<img align="right" title="Share on LinkedIn" src="https://docs.cloudposse.com/images/ionicons/social-linkedin-outline-2.0.1-16x16-999999.svg" />][share_linkedin]
+[<img align="right" title="Share on Twitter" src="https://docs.cloudposse.com/images/ionicons/social-twitter-outline-2.0.1-16x16-999999.svg" />][share_twitter]
+
+
+[![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
+
 
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
@@ -40,13 +52,34 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
-## Data Science Infrastructure on AWS
 
-![BioAnalyze Logo](https://raw.githubusercontent.com/dabble-of-devops-bioanalyze/biohub-info/master/images/BioAnalyze-Ecosystem-Data-Visualization.jpeg)
-
+We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
 
 
 
+
+
+
+## Security & Compliance [<img src="https://cloudposse.com/wp-content/uploads/2020/11/bridgecrew.svg" width="250" align="right" />](https://bridgecrew.io/)
+
+Security scanning is graciously provided by Bridgecrew. Bridgecrew is the leading fully hosted, cloud-native solution providing continuous Terraform security and compliance.
+
+| Benchmark | Description |
+|--------|---------------|
+| [![Infrastructure Security](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=INFRASTRUCTURE+SECURITY) | Infrastructure Security Compliance |
+| [![CIS KUBERNETES](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/cis_kubernetes)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=CIS+KUBERNETES+V1.5) | Center for Internet Security, KUBERNETES Compliance |
+| [![CIS AWS](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=CIS+AWS+V1.2) | Center for Internet Security, AWS Compliance |
+| [![CIS AZURE](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=CIS+AZURE+V1.1) | Center for Internet Security, AZURE Compliance |
+| [![PCI-DSS](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=PCI-DSS+V3.2) | Payment Card Industry Data Security Standards Compliance |
+| [![NIST-800-53](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=NIST-800-53) | National Institute of Standards and Technology Compliance |
+| [![ISO27001](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=ISO27001) | Information Security Management System, ISO/IEC 27001 Compliance |
+| [![SOC2](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=SOC2)| Service Organization Control 2 Compliance |
+| [![CIS GCP](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=CIS+GCP+V1.1) | Center for Internet Security, GCP Compliance |
+| [![HIPAA](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-biodeploy%2Fterraform-aws-eks-autoscaling&benchmark=HIPAA) | Health Insurance Portability and Accountability Compliance |
+
+
+
+## Usage
 
 
 **IMPORTANT:** We do not pin modules to versions in our examples because of the
@@ -79,6 +112,8 @@ module "example" {
   context = module.this.context
 }
 ```
+
+
 
 
 ## Examples
@@ -114,10 +149,10 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.49.0 |
-| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.2.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
+| <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
 ## Modules
 
@@ -125,9 +160,10 @@ Available targets:
 |------|--------|---------|
 | <a name="module_eks_cluster"></a> [eks\_cluster](#module\_eks\_cluster) | cloudposse/eks-cluster/aws | >= 0.41.0 |
 | <a name="module_eks_node_group"></a> [eks\_node\_group](#module\_eks\_node\_group) | cloudposse/eks-node-group/aws | 0.24.0 |
+| <a name="module_helm_ingress"></a> [helm\_ingress](#module\_helm\_ingress) | dabble-of-devops-bioanalyze/eks-bitnami-nginx-ingress/aws | >= 0.4.0 |
 | <a name="module_iam_assumable_role_admin"></a> [iam\_assumable\_role\_admin](#module\_iam\_assumable\_role\_admin) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 3.6.0 |
 | <a name="module_label"></a> [label](#module\_label) | cloudposse/label/null | 0.24.1 |
-| <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.24.1 |
+| <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
 
@@ -149,8 +185,8 @@ Available targets:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_additional_tag_map"></a> [additional\_tag\_map](#input\_additional\_tag\_map) | Additional tags for appending to tags\_as\_list\_of\_maps. Not added to `tags`. | `map(string)` | `{}` | no |
-| <a name="input_attributes"></a> [attributes](#input\_attributes) | Additional attributes (e.g. `1`) | `list(string)` | `[]` | no |
+| <a name="input_additional_tag_map"></a> [additional\_tag\_map](#input\_additional\_tag\_map) | Additional key-value pairs to add to each map in `tags_as_list_of_maps`. Not added to `tags` or `id`.<br>This is for some rare cases where resources want additional configuration of tags<br>and therefore take a list of maps with tag key, value, and additional configuration. | `map(string)` | `{}` | no |
+| <a name="input_attributes"></a> [attributes](#input\_attributes) | ID element. Additional attributes (e.g. `workers` or `cluster`) to add to `id`,<br>in the order they appear in the list. New attributes are appended to the<br>end of the list. The elements of the list are joined by the `delimiter`<br>and treated as a single ID element. | `list(string)` | `[]` | no |
 | <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | Cert Manager Helm Chart Version. If you are changing either this version of the kubernetes version make sure that the versions are compatible. For more information see: https://cert-manager.io/docs/installation/helm/ | `string` | `"v1.5.4"` | no |
 | <a name="input_cluster_encryption_config_enabled"></a> [cluster\_encryption\_config\_enabled](#input\_cluster\_encryption\_config\_enabled) | Set to `true` to enable Cluster Encryption Configuration | `bool` | `true` | no |
 | <a name="input_cluster_encryption_config_kms_key_deletion_window_in_days"></a> [cluster\_encryption\_config\_kms\_key\_deletion\_window\_in\_days](#input\_cluster\_encryption\_config\_kms\_key\_deletion\_window\_in\_days) | Cluster Encryption Config KMS Key Resource argument - key deletion windows in days post destruction | `number` | `10` | no |
@@ -159,34 +195,41 @@ Available targets:
 | <a name="input_cluster_encryption_config_kms_key_policy"></a> [cluster\_encryption\_config\_kms\_key\_policy](#input\_cluster\_encryption\_config\_kms\_key\_policy) | Cluster Encryption Config KMS Key Resource argument - key policy | `string` | `null` | no |
 | <a name="input_cluster_encryption_config_resources"></a> [cluster\_encryption\_config\_resources](#input\_cluster\_encryption\_config\_resources) | Cluster Encryption Config Resources to encrypt, e.g. ['secrets'] | `list(any)` | <pre>[<br>  "secrets"<br>]</pre> | no |
 | <a name="input_cluster_log_retention_period"></a> [cluster\_log\_retention\_period](#input\_cluster\_log\_retention\_period) | Number of days to retain cluster logs. Requires `enabled_cluster_log_types` to be set. See https://docs.aws.amazon.com/en_us/eks/latest/userguide/control-plane-logs.html. | `number` | `7` | no |
-| <a name="input_context"></a> [context](#input\_context) | Single object for setting entire context at once.<br>See description of individual variables for details.<br>Leave string and numeric variables as `null` to use default value.<br>Individual variable settings (non-null) override settings in context object,<br>except for attributes, tags, and additional\_tag\_map, which are merged. | `any` | <pre>{<br>  "additional_tag_map": {},<br>  "attributes": [],<br>  "delimiter": null,<br>  "enabled": true,<br>  "environment": null,<br>  "id_length_limit": null,<br>  "label_key_case": null,<br>  "label_order": [],<br>  "label_value_case": null,<br>  "name": null,<br>  "namespace": null,<br>  "regex_replace_chars": null,<br>  "stage": null,<br>  "tags": {}<br>}</pre> | no |
-| <a name="input_delimiter"></a> [delimiter](#input\_delimiter) | Delimiter to be used between `namespace`, `environment`, `stage`, `name` and `attributes`.<br>Defaults to `-` (hyphen). Set to `""` to use no delimiter at all. | `string` | `null` | no |
+| <a name="input_context"></a> [context](#input\_context) | Single object for setting entire context at once.<br>See description of individual variables for details.<br>Leave string and numeric variables as `null` to use default value.<br>Individual variable settings (non-null) override settings in context object,<br>except for attributes, tags, and additional\_tag\_map, which are merged. | `any` | <pre>{<br>  "additional_tag_map": {},<br>  "attributes": [],<br>  "delimiter": null,<br>  "descriptor_formats": {},<br>  "enabled": true,<br>  "environment": null,<br>  "id_length_limit": null,<br>  "label_key_case": null,<br>  "label_order": [],<br>  "label_value_case": null,<br>  "labels_as_tags": [<br>    "unset"<br>  ],<br>  "name": null,<br>  "namespace": null,<br>  "regex_replace_chars": null,<br>  "stage": null,<br>  "tags": {},<br>  "tenant": null<br>}</pre> | no |
+| <a name="input_delimiter"></a> [delimiter](#input\_delimiter) | Delimiter to be used between ID elements.<br>Defaults to `-` (hyphen). Set to `""` to use no delimiter at all. | `string` | `null` | no |
+| <a name="input_descriptor_formats"></a> [descriptor\_formats](#input\_descriptor\_formats) | Describe additional descriptors to be output in the `descriptors` output map.<br>Map of maps. Keys are names of descriptors. Values are maps of the form<br>`{<br>   format = string<br>   labels = list(string)<br>}`<br>(Type is `any` so the map values can later be enhanced to provide additional options.)<br>`format` is a Terraform format string to be passed to the `format()` function.<br>`labels` is a list of labels, in order, to pass to `format()` function.<br>Label values will be normalized before being passed to `format()` so they will be<br>identical to how they appear in `id`.<br>Default is `{}` (`descriptors` output will be empty). | `any` | `{}` | no |
 | <a name="input_eks_node_group_autoscaling_enabled"></a> [eks\_node\_group\_autoscaling\_enabled](#input\_eks\_node\_group\_autoscaling\_enabled) | n/a | `bool` | `false` | no |
 | <a name="input_eks_node_groups"></a> [eks\_node\_groups](#input\_eks\_node\_groups) | EKS Worker Groups | <pre>list(object({<br>    instance_types = list(string)<br>    desired_size   = number<br>    min_size       = number<br>    max_size       = number<br>    disk_size      = number<br>    name           = string<br>  }))</pre> | <pre>[<br>  {<br>    "desired_size": 1,<br>    "disk_size": 20,<br>    "instance_types": [<br>      "t3a.medium"<br>    ],<br>    "max_size": 2,<br>    "min_size": 1,<br>    "name": "worker-group-1"<br>  }<br>]</pre> | no |
 | <a name="input_eks_worker_group_autoscaling_policies_enabled"></a> [eks\_worker\_group\_autoscaling\_policies\_enabled](#input\_eks\_worker\_group\_autoscaling\_policies\_enabled) | Whether to create `aws_autoscaling_policy` and `aws_cloudwatch_metric_alarm` resources to control Auto Scaling | `bool` | `false` | no |
 | <a name="input_eks_workers_role_arns"></a> [eks\_workers\_role\_arns](#input\_eks\_workers\_role\_arns) | List of Role ARNs of the worker nodes | `list(string)` | `[]` | no |
+| <a name="input_enable_ssl"></a> [enable\_ssl](#input\_enable\_ssl) | enable ssl | `bool` | `true` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources | `bool` | `null` | no |
 | <a name="input_enabled_cluster_log_types"></a> [enabled\_cluster\_log\_types](#input\_enabled\_cluster\_log\_types) | A list of the desired control plane logging to enable. For more information, see https://docs.aws.amazon.com/en_us/eks/latest/userguide/control-plane-logs.html. Possible values [`api`, `audit`, `authenticator`, `controllerManager`, `scheduler`] | `list(string)` | <pre>[<br>  "audit"<br>]</pre> | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
-| <a name="input_id_length_limit"></a> [id\_length\_limit](#input\_id\_length\_limit) | Limit `id` to this many characters (minimum 6).<br>Set to `0` for unlimited length.<br>Set to `null` for default, which is `0`.<br>Does not affect `id_full`. | `number` | `null` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | ID element. Usually used for region e.g. 'uw2', 'us-west-2', OR role 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
+| <a name="input_id_length_limit"></a> [id\_length\_limit](#input\_id\_length\_limit) | Limit `id` to this many characters (minimum 6).<br>Set to `0` for unlimited length.<br>Set to `null` for keep the existing setting, which defaults to `0`.<br>Does not affect `id_full`. | `number` | `null` | no |
 | <a name="input_install_cert_manager"></a> [install\_cert\_manager](#input\_install\_cert\_manager) | n/a | `bool` | `true` | no |
+| <a name="input_install_ingress"></a> [install\_ingress](#input\_install\_ingress) | Install the nginx ingress yes/no | `bool` | `"true"` | no |
 | <a name="input_kubernetes_labels"></a> [kubernetes\_labels](#input\_kubernetes\_labels) | Key-value mapping of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed | `map(string)` | `{}` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Desired Kubernetes master version. If you do not specify a value, the latest available version is used | `string` | `"1.17"` | no |
-| <a name="input_label_key_case"></a> [label\_key\_case](#input\_label\_key\_case) | The letter case of label keys (`tag` names) (i.e. `name`, `namespace`, `environment`, `stage`, `attributes`) to use in `tags`.<br>Possible values: `lower`, `title`, `upper`.<br>Default value: `title`. | `string` | `null` | no |
-| <a name="input_label_order"></a> [label\_order](#input\_label\_order) | The naming order of the id output and Name tag.<br>Defaults to ["namespace", "environment", "stage", "name", "attributes"].<br>You can omit any of the 5 elements, but at least one must be present. | `list(string)` | `null` | no |
-| <a name="input_label_value_case"></a> [label\_value\_case](#input\_label\_value\_case) | The letter case of output label values (also used in `tags` and `id`).<br>Possible values: `lower`, `title`, `upper` and `none` (no transformation).<br>Default value: `lower`. | `string` | `null` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Desired Kubernetes master version. If you do not specify a value, the latest available version is used | `string` | `"1.21"` | no |
+| <a name="input_label_key_case"></a> [label\_key\_case](#input\_label\_key\_case) | Controls the letter case of the `tags` keys (label names) for tags generated by this module.<br>Does not affect keys of tags passed in via the `tags` input.<br>Possible values: `lower`, `title`, `upper`.<br>Default value: `title`. | `string` | `null` | no |
+| <a name="input_label_order"></a> [label\_order](#input\_label\_order) | The order in which the labels (ID elements) appear in the `id`.<br>Defaults to ["namespace", "environment", "stage", "name", "attributes"].<br>You can omit any of the 6 labels ("tenant" is the 6th), but at least one must be present. | `list(string)` | `null` | no |
+| <a name="input_label_value_case"></a> [label\_value\_case](#input\_label\_value\_case) | Controls the letter case of ID elements (labels) as included in `id`,<br>set as tag values, and output by this module individually.<br>Does not affect values of tags passed in via the `tags` input.<br>Possible values: `lower`, `title`, `upper` and `none` (no transformation).<br>Set this to `title` and set `delimiter` to `""` to yield Pascal Case IDs.<br>Default value: `lower`. | `string` | `null` | no |
+| <a name="input_labels_as_tags"></a> [labels\_as\_tags](#input\_labels\_as\_tags) | Set of labels (ID elements) to include as tags in the `tags` output.<br>Default is to include all labels.<br>Tags with empty values will not be included in the `tags` output.<br>Set to `[]` to suppress all generated tags.<br>**Notes:**<br>  The value of the `name` tag, if included, will be the `id`, not the `name`.<br>  Unlike other `null-label` inputs, the initial setting of `labels_as_tags` cannot be<br>  changed in later chained modules. Attempts to change it will be silently ignored. | `set(string)` | <pre>[<br>  "default"<br>]</pre> | no |
+| <a name="input_letsencrypt_email"></a> [letsencrypt\_email](#input\_letsencrypt\_email) | email | `string` | `""` | no |
 | <a name="input_local_exec_interpreter"></a> [local\_exec\_interpreter](#input\_local\_exec\_interpreter) | shell to use for local\_exec | `list(string)` | <pre>[<br>  "/bin/sh",<br>  "-c"<br>]</pre> | no |
 | <a name="input_map_additional_aws_accounts"></a> [map\_additional\_aws\_accounts](#input\_map\_additional\_aws\_accounts) | Additional AWS account numbers to add to `config-map-aws-auth` ConfigMap | `list(string)` | `[]` | no |
 | <a name="input_map_additional_iam_roles"></a> [map\_additional\_iam\_roles](#input\_map\_additional\_iam\_roles) | Additional IAM roles to add to `config-map-aws-auth` ConfigMap | <pre>list(object({<br>    rolearn  = string<br>    username = string<br>    groups   = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_map_additional_iam_users"></a> [map\_additional\_iam\_users](#input\_map\_additional\_iam\_users) | Additional IAM users to add to `config-map-aws-auth` ConfigMap | <pre>list(object({<br>    userarn  = string<br>    username = string<br>    groups   = list(string)<br>  }))</pre> | `[]` | no |
-| <a name="input_name"></a> [name](#input\_name) | Solution name, e.g. 'app' or 'jenkins' | `string` | `null` | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | ID element. Usually the component or solution name, e.g. 'app' or 'jenkins'.<br>This is the only ID element not also included as a `tag`.<br>The "name" tag is set to the full `id` string. There is no tag with the value of the `name` input. | `string` | `null` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | ID element. Usually an abbreviation of your organization name, e.g. 'eg' or 'cp', to help ensure generated IDs are globally unique | `string` | `null` | no |
+| <a name="input_nginx_ingress_namespace"></a> [nginx\_ingress\_namespace](#input\_nginx\_ingress\_namespace) | install the nginx ingress | `string` | `"nginx-ingress"` | no |
 | <a name="input_oidc_provider_enabled"></a> [oidc\_provider\_enabled](#input\_oidc\_provider\_enabled) | Create an IAM OIDC identity provider for the cluster, then you can create IAM roles to associate with a service account in the cluster, instead of using `kiam` or `kube2iam`. For more information, see https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html | `bool` | `true` | no |
-| <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Regex to replace chars with empty string in `namespace`, `environment`, `stage` and `name`.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
+| <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Terraform regular expression (regex) string.<br>Characters matching the regex will be removed from the ID elements.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | `"us-east-1"` | no |
-| <a name="input_stage"></a> [stage](#input\_stage) | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
+| <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Public Subnet Ids | `list(string)` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
+| <a name="input_tenant"></a> [tenant](#input\_tenant) | ID element \_(Rarely used, not included by default)\_. A customer identifier, indicating who this instance of a resource is for | `string` | `null` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID for the cluster VPC ID | `string` | n/a | yes |
 
 ## Outputs
@@ -202,16 +245,19 @@ Available targets:
 | <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | n/a |
 | <a name="output_eks_cluster_node_groups"></a> [eks\_cluster\_node\_groups](#output\_eks\_cluster\_node\_groups) | n/a |
 | <a name="output_get_kubectl"></a> [get\_kubectl](#output\_get\_kubectl) | Get your kubectl |
+| <a name="output_helm_ingress"></a> [helm\_ingress](#output\_helm\_ingress) | get the helm ingress |
+| <a name="output_helm_release_cert_manager"></a> [helm\_release\_cert\_manager](#output\_helm\_release\_cert\_manager) | n/a |
 | <a name="output_id"></a> [id](#output\_id) | ID of the created example |
 | <a name="output_region"></a> [region](#output\_region) | AWS Region of the cluster |
 <!-- markdownlint-restore -->
 
 
 
-
 ## Share the Love
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling)! (it helps **a lot**)
+Like this project? Please give it a ★ on [our GitHub](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling)! (it helps us **a lot**)
+
+Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
 
 
@@ -246,25 +292,49 @@ For additional context, refer to some of these links.
 
 **Got a question?** We got answers.
 
-File a GitHub [issue](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/issues), send us an jillian@dabbleofdevops.com.
+File a GitHub [issue](https://github.com/dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling/issues), send us an [email][email] or join our [Slack Community][slack].
 
-## Bioinformatics Infrastructure on AWS for Startups
+[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
-I'll help you build your data science cloud infrastructure from the ground up so you can own it using open source software. Then I'll show you how to operate it and stick around for as long as you need us.
+## DevOps Accelerator for Startups
 
-[Learn More](https://www.dabbleofdevops.com)
 
-Work directly with me via email, slack, and video conferencing.
+We are a [**DevOps Accelerator**][commercial_support]. We'll help you build your cloud infrastructure from the ground up so you can own it. Then we'll show you how to operate it and stick around for as long as you need us.
 
-- **Scientific Workflow Automation and Optimization.** Got workflows that are giving you trouble? Let's work together to ensure that your analyses run with or without your scientists being fully caffeinated.
-- **High Performance Compute Infrastructure.** Highly available, auto scaling clusters to analyze *all the (bioinformatics related!) things*. All setups are completely integrated with your workflow system of choice, whether that is Airflow, Prefect, Snakemake or Nextflow.
-- **Kubernetes and AWS Batch Setup for Apache Airflow** Orchestrate your Bioinformatics Workflows with Apache Airflow. Get full auditing, SLA, logging and monitoring for your workflows running on AWS Batch.
-- **High Performance Compute Setup that Int** You'll have built-in governance with accountability and audit logs for all changes.
-- **Docker Images** Get advice and hands on training for your team to build complex software stacks onto docker images.
+[![Learn More](https://img.shields.io/badge/learn%20more-success.svg?style=for-the-badge)][commercial_support]
+
+Work directly with our team of DevOps experts via email, slack, and video conferencing.
+
+We deliver 10x the value for a fraction of the cost of a full-time engineer. Our track record is not even funny. If you want things done right and you need it done FAST, then we're your best bet.
+
+- **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
+- **Release Engineering.** You'll have end-to-end CI/CD with unlimited staging environments.
+- **Site Reliability Engineering.** You'll have total visibility into your apps and microservices.
+- **Security Baseline.** You'll have built-in governance with accountability and audit logs for all changes.
+- **GitOps.** You'll be able to operate your infrastructure via Pull Requests.
 - **Training.** You'll receive hands-on training so your team can operate what we build.
 - **Questions.** You'll have a direct line of communication between our teams via a Shared Slack channel.
 - **Troubleshooting.** You'll get help to triage when things aren't working.
+- **Code Reviews.** You'll receive constructive feedback on Pull Requests.
 - **Bug Fixes.** We'll rapidly work with you to fix any bugs in our projects.
+
+## Slack Community
+
+Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+
+## Discourse Forums
+
+Participate in our [Discourse Forums][discourse]. Here you'll find answers to commonly asked questions. Most questions will be related to the enormous number of projects we support on our GitHub. Come here to collaborate on answers, find solutions, and get ideas about the products and services we value. It only takes a minute to get started! Just sign in with SSO using your GitHub account.
+
+## Newsletter
+
+Sign up for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover.
+
+## Office Hours
+
+[Join us every Wednesday via Zoom][office_hours] for our weekly "Lunch & Learn" sessions. It's **FREE** for everyone!
+
+[![zoom](https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png")][office_hours]
 
 ## Contributing
 
@@ -274,7 +344,7 @@ Please use the [issue tracker](https://github.com/dabble-of-devops-biodeploy/ter
 
 ### Developing
 
-If you are interested in being a contributor and want to get involved in developing this project or help out with other projects, I would love to hear from you! Shoot me an email at jillian@dabbleofdevops.com.
+If you are interested in being a contributor and want to get involved in developing this project or [help out](https://cpco.io/help-out) with our other projects, we would love to hear from you! Shoot us an [email][email].
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
@@ -290,7 +360,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyrights
 
-Copyright © 2020-2021 [Dabble of DevOps, SCorp](https://www.dabbleofdevops.com)
+Copyright © 2020-2022 [Dabble of DevOps, SCorp](https://www.dabbleofdevops.com)
 
 
 
@@ -333,6 +403,18 @@ under the License.
 
 All other trademarks referenced herein are the property of their respective owners.
 
+## About
+
+This project is maintained and funded by [Cloud Posse, LLC][website]. Like it? Please let us know by [leaving a testimonial][testimonial]!
+
+[![Cloud Posse][logo]][website]
+
+We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. We ❤️  [Open Source Software][we_love_open_source].
+
+We offer [paid support][commercial_support] on all of our projects.
+
+Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.
+
 
 
 ### Contributors
@@ -345,7 +427,8 @@ All other trademarks referenced herein are the property of their respective owne
   [jerowe_homepage]: https://github.com/jerowe
   [jerowe_avatar]: https://img.cloudposse.com/150x150/https://github.com/jerowe.png
 
-Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
+[![README Footer][readme_footer_img]][readme_footer_link]
+[![Beacon][beacon]][website]
 
   [logo]: https://cloudposse.com/logo-300x69.svg
   [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-biodeploy/terraform-aws-eks-autoscaling&utm_content=docs
